@@ -13,6 +13,7 @@
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="js/skel.min.js"></script>
 		<script src="js/init.js"></script>
+		
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -38,17 +39,40 @@
 								<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li> -->
 								<li><a href="#" class="icon fa-linkedin"><span class="label">Linkedin</span></a></li>
 								<li><a href="github.com/ldimitrov" class="icon fa-github"><span class="label">Github</span></a></li>
-								<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+								<li><a href="#" id="modal_open" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 							</ul>
 						</nav>
 					</header>
 
-				<!-- Footer -->
+					<div id="modal_wrapper">
+						<div id="modal_window">
+
+							<div style="text-align: right;"><a id="modal_close" href="#">close <b>X</b></a></div>
+
+							<p>Complete the form below to send an email:</p>
+
+							<form id="modal_feedback" method="POST" action="#" accept-charset="UTF-8">
+								<p><label>Your Name<strong>*</strong><br>
+								<input type="text" autofocus required size="48" name="name" value=""></label></p>
+								<p><label>Email Address<strong>*</strong><br>
+								<input type="email" required title="Please enter a valid email address" size="48" name="email" value=""></label></p>
+								<p><label>Subject<br>
+								<input type="text" size="48" name="subject" value=""></label></p>
+								<p><label>Enquiry<strong>*</strong><br>
+								<textarea required name="message" cols="48" rows="8"></textarea></label></p>
+								<p><input type="submit" name="feedbackForm" value="Send Message"></p>
+							</form>
+
+						</div> <!-- #modal_window -->
+					</div> <!-- #modal_wrapper -->
+
+				<!-- Footer 
 					<footer id="footer">
 						<span class="copyright">&copy; Untitled. Design: <a target="_blank" href="http://html5up.net">HTML5 UP</a>.</span>
 					</footer>
-				
+				-->
 			</div>
 		</div>
+		<script type="text/javascript" src="js/modal.js"></script>
 	</body>
 </html>
