@@ -1,41 +1,11 @@
-
-  // Original JavaScript code by Chirp Internet: www.chirp.com.au
-  // Please acknowledge use of this code by including this header.
-
-  var checkForm = function(e) {
-    var form = (e.target) ? e.target : e.srcElement;
-    if(form.name.value == "") {
-      alert("Please enter your Name");
-      form.name.focus();
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
-      return;
-    }
-    if(form.email.value == "") {
-      alert("Please enter a valid Email address");
-      form.email.focus();
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
-      return;
-    }
-    if(form.message.value == "") {
-      alert("Please enter your comment or question in the Message box");
-      form.message.focus();
-      e.preventDefault ? e.preventDefault() : e.returnValue = false;
-      return;
-    }
-  };
-
-
-// Original JavaScript code by Chirp Internet: www.chirp.com.au
-// Please acknowledge use of this code by including this header.
-
 var modal_init = function() {
 
-  var modalWrapper = document.getElementById("modal_wrapper");
+  var modalMask = document.getElementById("modal_mask");
   var modalWindow  = document.getElementById("modal_window");
 
   var openModal = function(e)
   {
-    modalWrapper.className = "overlay";
+    modalMask.className = "overlay";
     modalWindow.style.marginTop = (-modalWindow.offsetHeight)/2 + "px";
     modalWindow.style.marginLeft = (-modalWindow.offsetWidth)/2 + "px";
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
@@ -43,7 +13,7 @@ var modal_init = function() {
 
   var closeModal = function(e)
   {
-    modalWrapper.className = "";
+    modalMask.className = "";
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
   };
 
@@ -73,9 +43,7 @@ var modal_init = function() {
 };
 
 if(document.addEventListener) {
-  document.getElementById("modal_feedback").addEventListener("submit", checkForm, false);
   document.addEventListener("DOMContentLoaded", modal_init, false);
 } else {
-  document.getElementById("modal_feedback").attachEvent("onsubmit", checkForm);
   window.attachEvent("onload", modal_init);
 }
