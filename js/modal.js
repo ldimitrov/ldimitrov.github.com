@@ -1,41 +1,63 @@
 var modal_init = function() {
 
-  var modalMask = document.getElementById("modal_mask");
-  var modalWindow  = document.getElementById("modal_window");
+  var modalMaskContact = document.getElementById("modal_mask_contact");
+  var modalMaskAbout = document.getElementById("modal_mask_about");
+  var modal_window_small  = document.getElementById("modal_window_small");
+  var modal_window_big  = document.getElementById("modal_window_big");
 
-  var openModal = function(e)
+  var openModalContact = function(e)
   {
-    modalMask.className = "overlay";
-    modalWindow.style.marginTop = (-modalWindow.offsetHeight)/2 + "px";
-    modalWindow.style.marginLeft = (-modalWindow.offsetWidth)/2 + "px";
+    modalMaskContact.className = "overlay";
+    modal_window_small.style.marginTop = (-modal_window_small.offsetHeight)/2 + "px";
+    modal_window_small.style.marginLeft = (-modal_window_small.offsetWidth)/2 + "px";
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
   };
 
-  var closeModal = function(e)
+  var openModalAbout = function(e)
   {
-    modalMask.className = "";
+    modalMaskAbout.className = "overlay";
+    modal_window_big.style.marginTop = (-modal_window_big.offsetHeight)/2 + "px";
+    modal_window_big.style.marginLeft = (-modal_window_big.offsetWidth)/2 + "px";
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+  };
+
+  var closeModalContact = function(e)
+  {
+    modalMaskContact.className = "";
+    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+  };
+
+  var closeModalAbout = function(e)
+  {
+    modalMaskAbout.className = "";
     e.preventDefault ? e.preventDefault() : e.returnValue = false;
   };
 
   var clickHandler = function(e) {
     if(!e.target) e.target = e.srcElement;
     if(e.target.tagName == "DIV") {
-      if(e.target.id != "modal_window") closeModal(e);
+      if(e.target.id != "modal_window") closeModalContact(e);
+      if(e.target.id != "modal_window") closeModalAbout(e);
     }
   };
 
   var keyHandler = function(e) {
-    if(e.keyCode == 27) closeModal(e);
+    if(e.keyCode == 27) closeModalContact(e);
+    if(e.keyCode == 27) closeModalAbout(e);
   };
 
   if(document.addEventListener) {
-    document.getElementById("modal_open").addEventListener("click", openModal, false);
-    document.getElementById("modal_close").addEventListener("click", closeModal, false);
+    document.getElementById("modal_open_contact").addEventListener("click", openModalContact, false);
+    document.getElementById("modal_close_contact").addEventListener("click", closeModalContact, false);
+    document.getElementById("modal_open_about").addEventListener("click", openModalAbout, false);
+    document.getElementById("modal_close_about").addEventListener("click", closeModalAbout, false);
     document.addEventListener("click", clickHandler, false);
     document.addEventListener("keydown", keyHandler, false);
   } else {
-    document.getElementById("modal_open").attachEvent("onclick", openModal);
-    document.getElementById("modal_close").attachEvent("onclick", closeModal);
+    document.getElementById("modal_open_contact").attachEvent("onclick", openModalContact);
+    document.getElementById("modal_close_contact").attachEvent("onclick", closeModalContact);
+    document.getElementById("modal_open_about").attachEvent("onclick", openModalAbout);
+    document.getElementById("modal_close_about").attachEvent("onclick", closeModalAbout);
     document.attachEvent("onclick", clickHandler);
     document.attachEvent("onkeydown", keyHandler);
   }
